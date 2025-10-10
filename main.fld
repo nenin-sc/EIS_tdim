@@ -1,0 +1,96 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0308
+header_name {.h}
+code_name {.cpp}
+decl {\#include "clsAppContext.h"} {private local
+}
+
+decl {\#include <FL/x.h>} {private global
+}
+
+Function {} {open
+} {
+  code {clsAppContext AppContext;
+Fl::scheme("gtk+");} {}
+  Fl_Window {} {
+    label {Extract  EIS data from text}
+    user_data {&AppContext} user_data_type {clsAppContext*}
+    callback {if (Fl::event()==FL_SHORTCUT && Fl::event_key()==FL_Escape)
+    return;
+v->cbClose();} open
+    xywh {740 402 900 558} type Double align 80
+    code0 {AppContext.Win(o);}
+    code1 {AppContext.init_windows();} visible
+  } {
+    Fl_Input {} {
+      label {Hidden input for paste:}
+      user_data {&AppContext}
+      xywh {390 430 100 25} align 5 hide deactivate
+      code1 {AppContext.RegisterWg("intx_test",o);}
+    }
+    Fl_Button {} {
+      label Save
+      user_data {&AppContext} user_data_type {clsAppContext*}
+      callback {v->cbSaveCnf();}
+      xywh {685 5 100 25} labeltype ENGRAVED_LABEL labelcolor 4
+    }
+    Fl_Button {} {
+      label Close
+      user_data {&AppContext} user_data_type {clsAppContext*}
+      callback {v->cbClose();}
+      xywh {790 5 100 25} labeltype ENGRAVED_LABEL labelcolor 80
+    }
+    Fl_Table MetaDataTable {
+      label {Meta Data}
+      user_data {&AppContext}
+      callback {MetaDataTable->tbl_callback();} open
+      private xywh {35 235 850 310} labelsize 18
+      code0 {AppContext.RegisterWg("tbl_Metadata",o);}
+      class clsMetaDataTable
+    } {}
+    Fl_Button {} {
+      label {Add row}
+      user_data MetaDataTable user_data_type {clsMetaDataTable*}
+      callback {v->cbAddRow();}
+      xywh {495 170 100 25}
+    }
+    Fl_Value_Input {} {
+      label {Area, cm²:}
+      user_data {&AppContext} selected
+      xywh {345 110 100 30} labelsize 16 minimum 0.1 maximum 1000 value 16 textsize 16
+      code0 {AppContext.RegisterWg("inpv_Area",o);}
+      code1 {o->color(fl_rgb_color(220,255,255));}
+    }
+    Fl_Button {} {
+      label {Del row}
+      user_data MetaDataTable user_data_type {clsMetaDataTable*}
+      callback {v->cbDelRow();}
+      xywh {620 170 100 25}
+    }
+    Fl_Button {} {
+      label {Clear All}
+      user_data MetaDataTable user_data_type {clsMetaDataTable*}
+      callback {v->cbClearAll();}
+      xywh {735 170 100 25}
+    }
+    Fl_Choice {} {
+      label {Cell type:}
+      user_data {&AppContext} user_data_type {clsAppContext*}
+      callback {v->cbSelectArea(o->value());} open
+      xywh {90 114 160 26} down_box BORDER_BOX labelsize 16 textsize 16
+      code0 {AppContext.RegisterWg("ch_Area",o);}
+    } {}
+    Fl_Group {} {
+      label {Text file to import}
+      user_data {&AppContext} user_data_type {clsAppContext*}
+      callback {v->cbImport();} open
+      xywh {20 64 855 27} color 76 labelsize 16 align 5
+      code0 {AppContext.RegisterWg("btout_FOpen",o);}
+      code1 {o->button().label("@fileopen");}
+      code2 {o->button().color(fl_rgb_color(204,230,255));}
+      code3 {o->output().color(fl_rgb_color(204,230,255));}
+      class Fl_ButtonOutput
+    } {}
+  }
+  code {w->icon((const void *)LoadIcon(fl_display, MAKEINTRESOURCE(501)));} {}
+}

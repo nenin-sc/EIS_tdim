@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="tpl_fltk_enh" />
+		<Option pch_mode="2" />
+		<Option compiler="mingw-builds_gcc_142_compiler" />
+		<Option virtualFolders="main/;gmap/;gmap/cwb/;main/meta/" />
+		<Build>
+			<Target title="Debug">
+				<Option output="ext_eis_v2_db" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="mingw-builds_gcc_142_compiler" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="form1" />
+					<Add directory="GenContext" />
+					<Add directory="./" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="fl_eis_tdim_v2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="mingw-builds_gcc_142_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-s" />
+					<Add option="-march=x86-64-v2" />
+					<Add directory="form1" />
+					<Add directory="GenContext" />
+					<Add directory="./" />
+				</Compiler>
+				<Linker>
+					<Add option="-static -s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-fno-builtin" />
+			<Add option="-DLIBCONFIGXX_STATIC" />
+			<Add option="-DLIBCONFIG_STATIC" />
+			<Add option="-DWIN32" />
+			<Add directory="$(TARGET_COMPILER_DIR)FLTK/include" />
+			<Add directory="$(TARGET_COMPILER_DIR)user/include" />
+		</Compiler>
+		<Linker>
+			<Add library="lib_fl_small_stuff.a" />
+			<Add library="fltk" />
+			<Add library="ole32" />
+			<Add library="uuid" />
+			<Add library="comctl32" />
+			<Add library="wsock32" />
+			<Add library="comdlg32" />
+			<Add library="advapi32" />
+			<Add library="shell32" />
+			<Add library="oleaut32" />
+			<Add library="gdiplus" />
+			<Add library="m" />
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="winspool" />
+			<Add library="kernel32" />
+			<Add library="libpystring.a" />
+			<Add library="libgsl.a" />
+			<Add library="libfltk_PXY3_13.a" />
+			<Add library="libconfig++s.a" />
+			<Add library="lib_fltk_gcntx05.a" />
+			<Add library="libfmt.a" />
+			<Add directory="$(TARGET_COMPILER_DIR)FLTK/lib" />
+			<Add directory="$(TARGET_COMPILER_DIR)user/lib" />
+			<Add directory="$(TARGET_COMPILER_DIR)user/lib/gsl" />
+		</Linker>
+		<Unit filename="cbAppContext.cpp">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="clsAppContext.cpp">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="clsAppContext.h">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="clsMetaDataTable/clsMetaDataTable.cpp">
+			<Option virtualFolder="main/meta/" />
+		</Unit>
+		<Unit filename="clsMetaDataTable/clsMetaDataTable.h">
+			<Option virtualFolder="main/meta/" />
+		</Unit>
+		<Unit filename="cnfAppContext.cpp">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="form1/brwMulti_Browser1.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/cbForm1Context.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/clsCWBrowser/clsCWBrowser.cpp">
+			<Option virtualFolder="gmap/cwb/" />
+		</Unit>
+		<Unit filename="form1/clsCWBrowser/clsCWBrowser.h">
+			<Option virtualFolder="gmap/cwb/" />
+		</Unit>
+		<Unit filename="form1/clsForm1Context.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/clsForm1Context.h">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/clsTblOutZ.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/clsTblSLStat.cpp">
+			<Option virtualFolder="gmap/" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="form1/cnfForm1Context.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/form1.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/form1.fld">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/form1.h">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/pltForm1Context.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="form1/tblSelectCols.cpp">
+			<Option virtualFolder="gmap/" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="main.fld">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="main.h">
+			<Option virtualFolder="main/" />
+		</Unit>
+		<Unit filename="main_ico.RC">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,299 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0308
+header_name {.h}
+code_name {.cpp}
+decl {\#include "clsForm1Context.h"} {private local
+}
+
+Function {winit_form1()} {open
+} {
+  code {static clsForm1Context Form1Context;} {}
+  Fl_Window {} {
+    label {Extract EIS table}
+    user_data {&Form1Context} user_data_type {clsForm1Context*}
+    callback {if (Fl::event()==FL_SHORTCUT && Fl::event_key()==FL_Escape)
+    return;
+v->cbCancel();} open
+    xywh {562 137 840 870} type Double align 80 when 0
+    code0 {Form1Context.Win(o);}
+    code1 {Form1Context.PrepWidgets();} visible
+  } {
+    Fl_Button {} {
+      label Cancel
+      user_data {&Form1Context} user_data_type {clsForm1Context*}
+      callback {v->cbCancel();}
+      xywh {690 25 100 25}
+      code1 {Form1Context.RegisterWg("btn_Close",o);}
+    }
+    Fl_Tabs {} {
+      user_data {&Form1Context} open
+      xywh {25 79 880 786} selection_color 239 labelsize 18
+      code0 {Form1Context.RegisterWg("tbs_frm1_map",o);}
+    } {
+      Fl_Group {} {
+        label File open
+        xywh {25 110 805 730} labelsize 18 hide
+        code0 {Form1Context.tbs[0]=o;}
+      } {
+        Fl_Browser {} {
+          user_data {&Form1Context}
+          xywh {36 225 779 615} labelsize 18 textfont 4
+          code0 {Form1Context.RegisterWg("brw_SLFile",o);}
+          code1 {o->has_scrollbar(2);}
+          class Fl_Multi_Browser1
+        }
+        Fl_Button {} {
+          label Next
+          user_data {&Form1Context} user_data_type {clsForm1Context*}
+          callback {v->cbtn_frm12Tabl();}
+          xywh {720 125 100 25}
+          code1 {Form1Context.RegisterWg("btn_frm12Tabl",o);}
+        }
+        Fl_Group {} {
+          label Separators open
+          xywh {455 135 250 80} box GTK_DOWN_FRAME labelsize 16
+        } {
+          Fl_Choice {} {
+            label {Columns:}
+            user_data {&Form1Context} open
+            xywh {540 145 81 25} down_box BORDER_BOX labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("ch_frm1_colsep",o);}
+          } {}
+          Fl_Choice {} {
+            label {Decimal:}
+            user_data {&Form1Context} open
+            xywh {540 175 81 25} down_box BORDER_BOX labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("ch_frm1_decsep",o);}
+          } {}
+          Fl_Check_Button {} {
+            label {show
+tabs}
+            user_data {&Form1Context} user_data_type {clsForm1Context*}
+            callback {v->cbShowTabs(o->value());}
+            xywh {635 140 60 35} down_box DOWN_BOX align 21
+            code0 {Form1Context.RegisterWg("chbtn_ShowTabs",o);}
+          }
+        }
+        Fl_Group {} {
+          label Data open
+          xywh {230 135 220 80} box GTK_DOWN_FRAME labelsize 16
+        } {
+          Fl_Value_Output {} {
+            label {Lines:}
+            user_data {&Form1Context}
+            xywh {280 180 75 30} labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("vout_frm1_1stLn",o);}
+          }
+          Fl_Value_Output {} {
+            label {:}
+            user_data {&Form1Context}
+            xywh {366 180 75 30} labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("vout_frm1_LastLn",o);}
+          }
+          Fl_Value_Output {} {
+            label {Header:}
+            user_data {&Form1Context}
+            xywh {365 140 75 30} labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("vout_frm1_hdr",o);}
+          }
+        }
+        Fl_Group {} {
+          label Metadata open
+          xywh {50 135 165 80} box GTK_DOWN_FRAME labelsize 16
+        } {
+          Fl_Value_Output {} {
+            label {Lines:}
+            user_data {&Form1Context}
+            xywh {60 175 65 30} labelsize 16 align 5 minimum -1 maximum 100000 value -1 textsize 16
+            code0 {Form1Context.RegisterWg("vout_frm1_Meta1stLn",o);}
+          }
+          Fl_Value_Output {} {
+            label {:}
+            user_data {&Form1Context}
+            xywh {135 175 65 30} labelsize 16 minimum 1 maximum 10000 value -1 textsize 16
+            code0 {Form1Context.RegisterWg("vout_frm1_MetaLastLn",o);}
+          }
+        }
+      }
+      Fl_Group {} {
+        label Data open
+        xywh {30 118 790 743} labelsize 18 hide
+        code0 {Form1Context.tbs[1]=o;}
+      } {
+        Fl_Table {} {
+          user_data {&Form1Context} open
+          xywh {66 255 754 590} labelsize 18
+          code0 {Form1Context.RegisterWg("tbl_frm1_Data",o);}
+          class clsSelectCols
+        } {}
+        Fl_Button {} {
+          label Next
+          user_data {&Form1Context}
+          callback {((clsForm1Context *)v)->cbtn_frm12Stat();}
+          xywh {700 130 100 25}
+          code1 {Form1Context.RegisterWg("btn_frm12Stat",o);}
+        }
+        Fl_Button {} {
+          label Back
+          user_data {&Form1Context} user_data_type {clsForm1Context*}
+          callback {v->cbtn_frm1Back();}
+          xywh {701 170 100 25}
+          code1 {Form1Context.RegisterWg("btn_frm1B2F",o);}
+        }
+        Fl_Choice {} {
+          label {Impedance:}
+          user_data {&Form1Context} open
+          xywh {426 135 160 25} down_box BORDER_BOX labelsize 16 textsize 16
+          code0 {Form1Context.RegisterWg("ch_ReIm_mode",o);}
+        } {}
+        Fl_Choice {} {
+          label {Frequency:}
+          user_data {&Form1Context} open
+          xywh {245 135 81 25} down_box BORDER_BOX labelsize 16 textsize 16
+          code0 {Form1Context.RegisterWg("ch_Frq_mode",o);}
+        } {}
+        Fl_Choice {} {
+          label {φ:}
+          user_data {&Form1Context} open
+          xywh {580 210 81 25} down_box BORDER_BOX labelsize 16 textsize 16
+          code0 {Form1Context.RegisterWg("ch_fi_mode",o);}
+        } {}
+        Fl_Choice {} {
+          label {Z:}
+          user_data {&Form1Context} open
+          xywh {580 175 81 25} down_box BORDER_BOX labelsize 16 textsize 16
+          code0 {Form1Context.RegisterWg("ch_Z_mode",o);}
+        } {}
+        Fl_Group {} {
+          label Columns open
+          xywh {64 183 455 51} box GTK_DOWN_FRAME
+        } {
+          Fl_Value_Output {} {
+            label {Frq:}
+            user_data {&Form1Context}
+            xywh {140 193 75 26} labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("vout_FrqIdx",o);}
+          }
+          Fl_Value_Output {} {
+            label {Z1:}
+            user_data {&Form1Context}
+            xywh {284 193 75 26} labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("vout_ReIdx",o);}
+          }
+          Fl_Value_Output {} {
+            label {Z2:}
+            user_data {&Form1Context}
+            xywh {410 193 75 26} labelsize 16 textsize 16
+            code0 {Form1Context.RegisterWg("vout_ImIdx",o);}
+          }
+        }
+      }
+      Fl_Group {} {
+        label Preview open
+        xywh {25 114 880 747} labelsize 18
+        code0 {Form1Context.tbs[2]=o;}
+      } {
+        Fl_Button {} {
+          label Finish
+          user_data {&Form1Context} user_data_type {clsForm1Context*}
+          callback {v->cbFinish();}
+          xywh {710 125 100 25}
+          code1 {Form1Context.RegisterWg("btn_frm12Finish",o);}
+        }
+        Fl_Button {} {
+          label Back
+          user_data {&Form1Context}
+          callback {((clsForm1Context *)v)->cbtn_frm1Back();}
+          xywh {585 125 100 25}
+          code1 {Form1Context.RegisterWg("btn_frm1B2D",o);}
+        }
+        Fl_Tabs {} {open
+          xywh {30 195 805 630} labelsize 18
+        } {
+          Fl_Group {} {
+            label Table open
+            xywh {40 230 755 595} labelsize 18 hide
+          } {
+            Fl_Table {} {
+              label {Impedance Data}
+              user_data {&Form1Context} open
+              private xywh {75 275 470 550} labelsize 18
+              code0 {Form1Context.RegisterWg("tbl_frm1_TblOutZ",o);}
+              class clsTblOutZ
+            } {}
+          }
+          Fl_Group {} {
+            label Nyquist open
+            xywh {35 240 800 580} labelsize 18
+          } {
+            Fl_Box {} {
+              user_data {&Form1Context} selected
+              xywh {75 257 750 526} box GTK_DOWN_BOX color 7 align 5
+              code0 {Form1Context.RegisterWg("pltxy3_main",o);}
+              class {FL_PlotXY3_13::Fl_PlotXY3}
+            }
+            Fl_Box {} {
+              user_data {&Form1Context}
+              xywh {35 403 35 172} color 50
+              code0 {Form1Context.RegisterWg("rtl_Yax_inp",o);}
+              code1 {o->text("-Z.Im,Ω");}
+              code2 {o->angle(90);}
+              class Fl_Rotated_Label
+            }
+            Fl_Output {} {
+              user_data {&Form1Context}
+              xywh {400 791 150 24} box NO_BOX
+              code0 {Form1Context.RegisterWg("outx_Xlab_inp",o);}
+              code1 {o->value("Z.Re,Ω");}
+            }
+          }
+        }
+      }
+      Fl_Group {} {
+        label Width open
+        xywh {30 118 795 747} labelsize 18 hide
+        code0 {Form1Context.tbs[3]=o;}
+      } {
+        Fl_Button {} {
+          label Next
+          user_data {&Form1Context} user_data_type {clsForm1Context*}
+          callback {v->cbWgt2Tab();}
+          xywh {715 125 100 25}
+        }
+        Fl_Button {} {
+          label Back
+          user_data {&Form1Context} user_data_type {clsForm1Context*}
+          callback {v->cbtn_frm1Back();}
+          xywh {600 125 100 25}
+        }
+        Fl_Browser {} {
+          user_data {&Form1Context}
+          xywh {40 235 765 500} align 5 textfont 4
+          code0 {Form1Context.RegisterWg("brw_shw",o);}
+          code1 {o->has_scrollbar(clsCWBrowser::BOTH);}
+          code2 {o->type(FL_SELECT_BROWSER);}
+          class clsCWBrowser
+        }
+      }
+    }
+    Fl_Group {} {
+      label {Conversion schema file:} open
+      xywh {495 20 130 40} box GTK_DOWN_FRAME labelsize 16 align 4
+    } {
+      Fl_Button {} {
+        label {@fileopen}
+        user_data {&Form1Context} user_data_type {clsForm1Context*}
+        callback {v->cbOpenPrf();}
+        xywh {505 30 40 25} labelcolor 188
+        code1 {Form1Context.RegisterWg("btn_prfO",o);}
+      }
+      Fl_Button {} {
+        label {@filesave}
+        user_data {&Form1Context} user_data_type {clsForm1Context*}
+        callback {v->cbSavePrf();}
+        xywh {555 30 40 25} labelcolor 108
+        code1 {Form1Context.RegisterWg("btn_prfS",o);}
+      }
+    }
+  }
+}

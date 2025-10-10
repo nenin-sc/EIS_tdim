@@ -1,2 +1,3 @@
 # Auto detect text files and perform LF normalization
+*.cpp linguist-language=C++
 * text=auto

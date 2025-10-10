@@ -1,0 +1,28 @@
+#include "winuser.h"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "dpi.manifest"
+501 ICON MOVEABLE PURE LOADONCALL DISCARDABLE "svg_grT.ico"
+1 VERSIONINFO
+PRODUCTVERSION 2,00,0,000
+{
+  BLOCK "StringFileInfo"
+	 {
+		 BLOCK "040904E4"
+		 {
+			 VALUE "CompanyName", "IEN-PIB HITEP"
+			 VALUE "FileVersion", "v2 Win64 binary"
+			 VALUE "FileDescription", "Sotware to extract EIS from text"
+			 VALUE "InternalName", "fl_eis_tdim_"
+			 VALUE "Author", "Y.Naumovich"
+			 VALUE "OriginalFilename", "fl_eis_tdim_v2.exe"
+			 VALUE "ProductName", "Extract EIS from text files"
+	         VALUE "BuildDate", __DATE__ " " __TIME__
+             VALUE "Compiler", "MingW-w64 mingw-builds GCC" __VERSION__
+		 }
+	 }
+  BLOCK "VarFileInfo"
+	 {
+		 VALUE "Translation", 0x0409, 1252
+
+	 }
+}
+
