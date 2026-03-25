@@ -16,7 +16,7 @@ PRODUCTVERSION 2,00,0,000
 			 VALUE "OriginalFilename", "fl_eis_tdim_v2.exe"
 			 VALUE "ProductName", "Extract EIS from text files"
 	         VALUE "BuildDate", __DATE__ " " __TIME__
-             VALUE "Compiler", "MingW-w64 mingw-builds GCC" __VERSION__
+             VALUE "Compiler", "MingW-w64 mingw-builds GCC " __VERSION__
 		 }
 	 }
   BLOCK "VarFileInfo"

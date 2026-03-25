@@ -79,13 +79,13 @@ void clsForm1Context::cbWgt2Tab(){
 
 void clsForm1Context::cbtn_frm12Tabl(){
   auto ch=GetWg<Fl_Choice>("ch_frm1_colsep")->mvalue();
-  char swc=*(char*) ch->user_data();
-  if(swc=='-'){
+  const std::string delim={*(char*) ch->user_data(),0};
+  if(delim=="-"){
     PrepColsBrw();
     set_active_tbs(3);
   return;
   };
-  PrepTable();
+  PrepTable(delim);
   set_active_tbs(1);
 
 };

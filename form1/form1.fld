@@ -1,5 +1,5 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0308
+version 1.0402
 header_name {.h}
 code_name {.cpp}
 decl {\#include "clsForm1Context.h"} {private local
@@ -31,8 +31,8 @@ v->cbCancel();} open
       code0 {Form1Context.RegisterWg("tbs_frm1_map",o);}
     } {
       Fl_Group {} {
-        label File open
-        xywh {25 110 805 730} labelsize 18 hide
+        label File open selected
+        xywh {25 110 805 730} labelsize 18
         code0 {Form1Context.tbs[0]=o;}
       } {
         Fl_Browser {} {
@@ -128,8 +128,8 @@ tabs}
         } {}
         Fl_Button {} {
           label Next
-          user_data {&Form1Context}
-          callback {((clsForm1Context *)v)->cbtn_frm12Stat();}
+          user_data {&Form1Context} user_data_type {clsForm1Context*}
+          callback {v->cbtn_frm12Stat();}
           xywh {700 130 100 25}
           code1 {Form1Context.RegisterWg("btn_frm12Stat",o);}
         }
@@ -190,7 +190,7 @@ tabs}
       }
       Fl_Group {} {
         label Preview open
-        xywh {25 114 880 747} labelsize 18
+        xywh {25 114 880 747} labelsize 18 hide
         code0 {Form1Context.tbs[2]=o;}
       } {
         Fl_Button {} {
@@ -227,7 +227,7 @@ tabs}
             xywh {35 240 800 580} labelsize 18
           } {
             Fl_Box {} {
-              user_data {&Form1Context} selected
+              user_data {&Form1Context}
               xywh {75 257 750 526} box GTK_DOWN_BOX color 7 align 5
               code0 {Form1Context.RegisterWg("pltxy3_main",o);}
               class {FL_PlotXY3_13::Fl_PlotXY3}

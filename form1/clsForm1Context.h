@@ -82,7 +82,7 @@ class clsForm1Context:public clsGenContext
 
         virtual ~clsForm1Context();
         virtual void ParentWin( Fl_Double_Window *w);
-        void PrepTable();
+        void PrepTable(const std::string &s);
         void PrepColsBrw();
        void PrepWidgets();
     // cb

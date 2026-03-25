@@ -68,7 +68,7 @@ void clsForm1Context::PrepWidgets(){
  {
   auto ch=GetWg<Fl_Choice>("ch_fi_mode");
   ch->add("rad",0,nullptr,(void*)0);
-  ch->add("grad",0,nullptr,(void*)1);
+  ch->add("deg",0,nullptr,(void*)1);
   ch->value(0);
  }
   {
@@ -96,7 +96,7 @@ void clsForm1Context::ParentWin( Fl_Double_Window *w){
    set_active_tbs(0);
 };
 
-void clsForm1Context::PrepTable(){
+void clsForm1Context::PrepTable(const std::string &delim){
   auto brw=GetWg<Fl_Multi_Browser1>("brw_SLFile");
   size_t nl=brw->size();
   size_t fstl=GetWg<Fl_Value_Output>("vout_frm1_1stLn")->value();
@@ -114,17 +114,17 @@ void clsForm1Context::PrepTable(){
   }
     size_t idx=0;
   std::vector<std::string> bf;
-  std::string delims(" \t");
+//  std::string delims(" \t");
   auto tbl=GetWg<clsSelectCols>("tbl_frm1_Data");
   tbl->Data.clear();
   for(auto const & rln:rawFile){
    idx++;
    if(idx==hdrl){
-     string_tokenizer(rln,delims,bf);
+     string_tokenizer(rln,delim,bf);
      tbl->SetHdr(bf);
     }
    if(idx<fstl||idx>lstl) continue;
-   string_tokenizer(rln,delims,bf);
+   string_tokenizer(rln,delim,bf);
    tbl->AddRow(bf);
   }
 
@@ -184,7 +184,8 @@ void clsForm1Context::Prepare_FrqImRe(){
  }
  auto ch=GetWg<Fl_Choice>("ch_ReIm_mode");
   double zScale=*(double *)GetWg<Fl_Choice>("ch_Z_mode")->mvalue()->user_data();
- int f_mode=GetWg<Fl_Choice>("ch_ReIm_mode")->value();
+ int f_mode=GetWg<Fl_Choice>("ch_Frq_mode")->value();
+ int fi_mode=GetWg<Fl_Choice>("ch_fi_mode")->value();
  size_t fidx=GetWg<Fl_Value_Output>("vout_FrqIdx")->value();
  size_t z1idx=GetWg<Fl_Value_Output>("vout_ReIdx")->value();
  size_t z2idx=GetWg<Fl_Value_Output>("vout_ImIdx")->value();
@@ -219,6 +220,7 @@ void clsForm1Context::Prepare_FrqImRe(){
            double z1=zScale*std::stod(st.at(z1idx).c_str());
            double z2=std::stod(st.at(z2idx).c_str());
            if(f_mode==0) fr*=1./(2.*M_PI);
+          // z2-=180;
            if(fi_mode==1) z2*=M_PI/180.;
            auto cx=gsl_complex_polar(z1,z2);
            std::array<double,3> ta={fr,GSL_REAL(cx),-GSL_IMAG(cx)};
